@@ -26,7 +26,7 @@ function makeMarkers(feature, layer){
 		);
 	//set up divs classed using the MINOR_DESC 
 	$('#sideBar').append(
-		"<p class = 'sideBarItem three columns' id='"
+		"<p class = 'sideBarItem five columns' id='"
 		+ feature.properties.MINOR_NUM
 		+"'>"
 		+ feature.properties.MINOR_DESC
