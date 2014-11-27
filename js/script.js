@@ -1,14 +1,14 @@
 //set up our map
 var map = L.map('map')
-	.setView([42.7559421,-75.8092041], 7);
+	.setView([42.7559421,-75.8092041],7);
 
 
 //set up basemap tiles from stamen
 L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
 	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
 	subdomains: 'abcd',
-	minZoom: 0,
-	maxZoom: 20
+	minZoom: 5,
+	maxZoom: 15
 }).addTo(map);
 
 //function to create pop-ups and sidebar divs
@@ -24,15 +24,20 @@ function makeMarkers(feature, layer){
 		feature.properties.MINOR,
 		{direction: 'auto'}
 		);
-	//set up divs classed using the MINOR_DESC 
+
+	//set up DOM elements classed using the MINOR_DESC 
 	$('#sideBar').append(
-		"<p class = 'sideBarItem five columns' id='"
+		"<p class = 'sideBarItem"
+		+ " "
+		+ feature.properties.MAJORCOLOR
+		+ "' id='"
 		+ feature.properties.MINOR_NUM
 		+"'>"
 		+ feature.properties.MINOR_DESC
 		+"</p>"
 		)
 	}
+
 
 
 function highlightMarker(geojsonLayer,thisPoly) {
@@ -57,7 +62,7 @@ function highlightMarker(geojsonLayer,thisPoly) {
 function getColor(z) {
 	return 	z == unique(keys)[0] ? '#a6cee3':
 			z == unique(keys)[1] ? '#1f78b4':
-			z == unique(keys)[2] ? '#fdbf6f':
+			z == unique(keys)[2] ? '#1f78b4':
 			z == unique(keys)[3] ? '#33a02c':
 			z == unique(keys)[4] ? '#fb9a99':
 			z == unique(keys)[5] ? '#e31a1c':
@@ -110,10 +115,13 @@ legend.onAdd = function (map) {
 	//this loops through linking legend items with colors, resulting in all the pieces going into your legend
 	for (var j = 0; j < unique(keys).length; j++) {
 		labels.push(
-			'<i style="background:' 
+			'<span id='
+			+ String(unique(keys)[j])
+			+ '><i style="background:'
 			+ getColor(unique(keys)[j]) 
-			+ '"></i> '
-			+ unique(keys)[j]);
+			+ '"></i>'
+			+ unique(keys)[j]
+			+ '</span>');
 	}
 
 	//console.log(labels);

@@ -1,6 +1,7 @@
 body {
 	font-family: 'Lato', sans-serif;
 	line-height: 1.62;
+  font-size:9pt;
 }
 
 h1 {
@@ -11,23 +12,75 @@ div {
 	padding: 5px;
 }
 
+/* for all elements with id map */
 #map {
-  height: 650px;
+  height: 500px;
 }
+
 
 #sideBar {
+  height: 500px;
 	overflow: scroll;
+  box-sizing: border-box;
 }
 
-#sideBarItem {
+.sideBarItem {
 	padding-bottom:5px;
+}
+
+
+.A {
+  background-color: #a6cee3;
+}
+
+.B {
+  background-color: #1f78b4;
+}
+
+.C {
+  background-color: #1f78b4;
+}
+
+.D {
+  background-color: #33a02c;
+}
+
+.E {
+  background-color: #fb9a99;
+}
+
+.F {
+  background-color: #e31a1c;
+}
+
+.G {
+  background-color: #ffff99;
+}
+
+.H {
+  background-color: #ff7f00;
+}
+
+.I {
+  background-color: #cab2d6;
+}
+
+.J {
+  background-color: #6a3d9a;
+}
+
+.K {
+  background-color: #b2df8a;
+}
+
+.L {
+  background-color: #b15928;
 }
 
 
 /*styles for legend items */
 .info {
   padding: 6px 8px;
-  font: 14px/16px Arial, Helvetica, sans-serif;
   background: white;
   background: rgba(255,255,255,0.8);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -50,7 +103,7 @@ div {
   height: 20px;
   float: left;
   margin-right: 8px;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 /* style for sidebarItem highlights */
