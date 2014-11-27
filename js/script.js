@@ -62,7 +62,7 @@ function highlightMarker(geojsonLayer,thisPoly) {
 function getColor(z) {
 	return 	z == unique(keys)[0] ? '#a6cee3':
 			z == unique(keys)[1] ? '#1f78b4':
-			z == unique(keys)[2] ? '#1f78b4':
+			z == unique(keys)[2] ? '#fdbf6f':
 			z == unique(keys)[3] ? '#33a02c':
 			z == unique(keys)[4] ? '#fb9a99':
 			z == unique(keys)[5] ? '#e31a1c':
