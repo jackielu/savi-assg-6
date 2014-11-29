@@ -25,19 +25,25 @@ function makeMarkers(feature, layer){
 		{direction: 'auto'}
 		);
 
-	//set up DOM elements classed using the MINOR_DESC 
-	$('#sideBar').append(
-		"<p class = 'sideBarItem"
-		+ " "
-		+ feature.properties.MAJORCOLOR
-		+ "' id='"
-		+ feature.properties.MINOR_NUM
-		+"'>"
-		+ feature.properties.MINOR_DESC
-		+"</p>"
-		)
-	}
 
+	// //set up DOM elements classed using the MINOR_DESC 
+	// $('#sideBar').append(
+	// 	'<p class = sideBarItem id='
+	// 	+ feature.properties.MINOR_NUM
+	// 	+ '>'
+	// 	+ feature.properties.MINOR_DESC
+	// 	+ '</p>'
+	// 	)
+
+	//set up LI elements within each UL element
+	$(String("."+feature.properties.MAJORCOLOR.charAt(5))).append(
+		'<li class = sideBarItem id='
+		+ feature.properties.MINOR_NUM
+		+'> --'
+		+ feature.properties.MINOR_DESC
+		+ '</li>')
+
+	}
 
 
 function highlightMarker(geojsonLayer,thisPoly) {
@@ -105,6 +111,7 @@ function unique(keys) {
 };
 
 
+
 //this is the legend - another leaflet control
 var legend = L.control({position: 'topright'});
 
@@ -132,9 +139,30 @@ legend.onAdd = function (map) {
 };
 
 
+// function for creating collapsible list
+function prepareList() {
+  $('#expList').find('li:has(ul)')
+  	.click( function(event) {
+  		if (this == event.target) {
+  			$(this).toggleClass('expanded');
+  			$(this).children('ul').toggle('medium');
+  		}
+  		return false;
+  	})
+  	.addClass('collapsed')
+  	.children('ul').hide();
+  };
+ 
+  $(document).ready( function() {
+      prepareList();
+  });
+
+
+
+
 //add your data to the map
 $.getJSON('data/ecozone_wgs84_multipart.geojson', function(data){
-	//window.test = data;  //only use window for testing
+	window.test = data;  //only use window for testing
 	//console.log(data);
 
 	//call the function to create zoneArray
@@ -143,12 +171,29 @@ $.getJSON('data/ecozone_wgs84_multipart.geojson', function(data){
 	//call the function to add the legend to the map
 	legend.addTo(map);
 
+	prepareList();
+
+
+	//this creates the UL elements with the Zone value
+	var mainMenu = $("#expList");
+	for (var y = 0; y < unique(keys).length; y++) {
+		var new_ul = $('<ul class ="'
+			+ unique(keys)[y]
+			+ '"">'
+			+ unique(keys)[y]
+			+ '</ul>'
+			);
+		mainMenu.append(new_ul);
+	}
+
+
 	var geojsonLayer = L.geoJson(data.features, {  //use leaflet's functionality to grab geoJSON features
 		onEachFeature: makeMarkers,
 		//this provides thematic styling to the layers
 		style: style
 	})
 	.addTo(map);  //add to map
+
 
 	$('.sideBarItem')
 	.mouseenter(function(){
