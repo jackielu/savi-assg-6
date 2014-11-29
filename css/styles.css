@@ -22,12 +22,12 @@ div {
 
 /* for all elements with id map */
 #map {
-  height: 500px;
+  height: 700px;
 }
 
 
 #sideBar {
-  height: 500px;
+  height: 700px;
 	overflow: scroll;
   box-sizing: border-box;
 }
