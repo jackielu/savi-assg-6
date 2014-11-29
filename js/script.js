@@ -39,8 +39,8 @@ function makeMarkers(feature, layer){
 	$(String("."+feature.properties.MAJORCOLOR.charAt(5))).append(
 		'<li class = sideBarItem id='
 		+ feature.properties.MINOR_NUM
-		+'> --'
-		+ feature.properties.MINOR_DESC
+		+'>'
+		+ feature.properties.MINOR
 		+ '</li>')
 
 	}
@@ -169,7 +169,7 @@ $.getJSON('data/ecozone_wgs84_multipart.geojson', function(data){
 	getArray(data);
 
 	//call the function to add the legend to the map
-	legend.addTo(map);
+	// legend.addTo(map);
 
 	prepareList();
 
@@ -179,9 +179,9 @@ $.getJSON('data/ecozone_wgs84_multipart.geojson', function(data){
 	for (var y = 0; y < unique(keys).length; y++) {
 		var new_ul = $('<ul class ="'
 			+ unique(keys)[y]
-			+ '"">'
+			+ '""><h2>'
 			+ unique(keys)[y]
-			+ '</ul>'
+			+ '</h2></ul>'
 			);
 		mainMenu.append(new_ul);
 	}
@@ -209,3 +209,18 @@ $.getJSON('data/ecozone_wgs84_multipart.geojson', function(data){
 
 	})
 });
+
+
+
+//listeners for the About pop-up window
+$('#about').on('click',function(){
+	$('#mask').fadeIn(250);
+	$('.popup').fadeIn(250);
+});
+
+$('.close').on('click',function(){
+	$(this).parent().fadeOut(250);
+	$('#mask').fadeOut(250);
+});
+
+

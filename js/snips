@@ -1,0 +1,47 @@
+	$("ul:contains('ZONE A')")
+
+	mystring.charAt(mystring.length-1)
+"A"
+
+	$("ul:contains(mystring.charAt(mystring.length-1))")
+
+	stripquotes(data.features[0].properties.MAJORCOLOR)
+
+
+
+	this works to select a UL and append a new li
+
+	$(".A").append ('<li class = sideBarItem id='
+		+ test.features[0].properties.MINOR_NUM
+		+ '>'
+		+ test.features[0].properties.MINOR_DESC
+		+ '</li>'
+		)
+
+//this also works to select a unl
+	$(String("."+unique(keys)[0].charAt(5)))
+
+
+
+	$(String("."+test.features[0].properties.MAJORCOLOR.charAt(5)))
+
+
+	$(String("ul."+test.features[0].properties.MAJORCOLOR.charAt(5)))
+
+
+
+	to loop through all elements with class ZONE
+
+	$.each($('.ZONE'),function(){     
+		console.log($(this).html());
+		$(this)
+
+		}
+	)
+
+
+	[{ "MAJOR": "ZONE A APPALACHIAN PLATEAU", "MINOR": "A01 CATTARAUGUS HIGHLANDS", "MAJORCOLOR": "ZONE A", "MINOR_NUM": "A01", "MINOR_DESC": "CATTARAUGUS HIGHLANDS", "AREA": 6406764037.500000, "LEN": 546886.722160 },
+	{ "MAJOR": "ZONE A APPALACHIAN PLATEAU", "MINOR": "A02 ALLEGHENY HILLS", "MAJORCOLOR": "ZONE A", "MINOR_NUM": "A02", "MINOR_DESC": "ALLEGHENY HILLS", "AREA": 1990941241.310000, "LEN": 246950.415430 },
+	{ "MAJOR": "ZONE A APPALACHIAN PLATEAU", "MINOR": "A04 FINGER LAKE HIGHLANDS", "MAJORCOLOR": "ZONE A", "MINOR_NUM": "A04", "MINOR_DESC": "FINGER LAKE HIGHLANDS", "AREA": 2863631608.280000, "LEN": 448501.589869 },
+	{ "MAJOR": "ZONE B GREAT LAKES PLAIN", "MINOR": "B01 ERIE-ONTARIO PLAIN", "MAJORCOLOR": "ZONE B", "MINOR_NUM": "B01", "MINOR_DESC": "ERIE-ONTARIO PLAIN", "AREA": 13685806548.600000, "LEN": 1568845.942160 },
+	{ "MAJOR": "ZONE B GREAT LAKES PLAIN", "MINOR": "B02 DRUMLIN", "MAJORCOLOR": "ZONE B", "MINOR_NUM": "B02", "MINOR_DESC": "DRUMLIN", "AREA": 34983.539968, "LEN": 836.332792 }]
